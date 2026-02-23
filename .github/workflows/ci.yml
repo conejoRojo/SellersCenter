@@ -1,0 +1,98 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: sellerscenter
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r src/requirements.txt
+        
+    - name: Run Backend Linting (Ruff)
+      run: |
+        pip install ruff
+        ruff check src/
+
+    - name: Run Pytest
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DJANGO_SETTINGS_MODULE: config.settings.development
+        SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+      run: |
+        cd src
+        pytest
+
+  frontend-seller-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - name: Install Dependencies
+      run: |
+        cd frontend-seller
+        npm ci
+    - name: Lint
+      run: |
+        cd frontend-seller
+        npm run lint
+    - name: Build
+      run: |
+        cd frontend-seller
+        npm run build
+
+  frontend-aper-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - name: Install Dependencies
+      run: |
+        cd frontend-aper
+        npm ci
+    - name: Lint
+      run: |
+        cd frontend-aper
+        npm run lint
+    - name: Build
+      run: |
+        cd frontend-aper
+        npm run build
