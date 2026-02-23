@@ -1,4 +1,3 @@
-import React from 'react';
 import { Search, Plus, Filter } from 'lucide-react';
 
 export default function Catalog() {

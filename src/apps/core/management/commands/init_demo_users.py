@@ -1,7 +1,6 @@
 from django.core.management.base import BaseCommand
 from apps.accounts.models import User
 from apps.sellers.models import Seller
-import os
 
 class Command(BaseCommand):
     help = 'Crea usuarios y sellers iniciales para testing local.'
@@ -9,7 +8,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # 1. SuperUser
         if not User.objects.filter(username='admin').exists():
-            admin = User.objects.create_superuser('admin', 'admin@sellerscenter.local', 'admin123')
+            User.objects.create_superuser('admin', 'admin@sellerscenter.local', 'admin123')
             self.stdout.write(self.style.SUCCESS('Admin user created successfully (admin / admin123)'))
         else:
             self.stdout.write(self.style.WARNING('Admin user already exists'))

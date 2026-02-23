@@ -1,4 +1,3 @@
-import React from 'react';
 import { Store, Activity, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function Overview() {

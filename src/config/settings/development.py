@@ -3,7 +3,7 @@ SellersCenter — Configuración de Development
 SQLite/PostgreSQL local, DEBUG=True, sin S3.
 """
 
-from .base import *
+from .base import *  # noqa: F403
 from decouple import config
 
 DEBUG = True
@@ -31,7 +31,7 @@ AWS_DEFAULT_REGION = "us-east-1"
 AWS_ENDPOINT_URL = "http://localhost:4566"
 
 # --- Celery con SQS broker (LocalStack) ---
-CELERY_BROKER_URL = f"sqs://test:test@localhost:4566"
+CELERY_BROKER_URL = "sqs://test:test@localhost:4566"
 CELERY_BROKER_TRANSPORT_OPTIONS = {
     'region': AWS_DEFAULT_REGION,
     'is_secure': False,

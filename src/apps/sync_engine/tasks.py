@@ -1,6 +1,6 @@
 from celery import shared_task
 from django.db import transaction
-from apps.catalog.models import Product, Category
+from apps.catalog.models import Product
 from apps.orders.models import Order, OrderItem
 from apps.sellers.models import Seller
 from apps.channels.models import Channel

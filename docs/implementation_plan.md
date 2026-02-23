@@ -110,3 +110,20 @@ Como "Maestro de Ceremonias", crearé y desplegaré subagentes (scripts de Pytho
 #### Pruebas Unitarias (TDD / QA):
 *   - [x] Completar `tests/test_sync_engine.py` validando la inyección de errores (Rate Limits simulados) y asserts de creación en base de datos.
 *   - [x] Testear con django/pytest el Celery Task.
+
+---
+
+## 5. Continuidad Operativa (Migración a D:\Desarrollo\Aper)
+
+El proyecto entero fue migrado exitosamente desde `NotebookLM\projects` hacia `D:\Desarrollo\Aper\SellersCenter` (Repositorio Git oficial origin/dev).
+
+**Prompt de Invocación para el Orquestador (Memoria de Contexto):**
+Para que Antigravity (o cualquier otro agente) asuma inmediatamente su rol de Orquestador en el nuevo Workspace, el usuario debe abrir el chat en la nueva carpeta y enviar:
+> *"Asume tu rol de Maestro de Ceremonias / Orquestador. Lee el archivo `docs/implementation_plan.md`. Estamos en la Fase 12. Tienes autorización Vibecoding para desplegar a Claude/Codex CLI si lo necesitas."*
+
+### Fase 12: CI/CD "Green Build" y End-to-End
+*   **Estado:** [ ] Pendiente
+*   - [ ] Resolver errores de Lint (React import unused, lucide icons) en `frontend-seller` y `frontend-aper`.
+*   - [ ] Resolver advertencias de formato y test suites de Python (Ruff/Pytest) que rompen el pipeline de CI/CD.
+*   - [ ] Verificar repositorios por llaves expuestas (GitGuardian) y sanear historiales si es necesario.
+*   - [ ] Ejecutar prueba de humo (Smoke Test) End-to-End conectando Frontends React locales a la API de Django y Celery local.

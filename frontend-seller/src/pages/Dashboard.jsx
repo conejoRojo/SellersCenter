@@ -1,4 +1,3 @@
-import React from 'react';
 import { DollarSign, ShoppingBag, PackageSearch, Activity } from 'lucide-react';
 import StatCard from '../components/StatCard';
 

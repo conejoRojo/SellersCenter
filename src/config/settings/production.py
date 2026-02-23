@@ -3,7 +3,7 @@ SellersCenter — Configuración de Production (AWS)
 RDS, ElastiCache, S3, Secrets Manager.
 """
 
-from .base import *
+from .base import *  # noqa: F403
 from decouple import config
 import boto3
 import json
@@ -71,10 +71,10 @@ AWS_SES_REGION_NAME = config("AWS_DEFAULT_REGION")
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default="no-reply@sellerscenter.com")
 
 # --- Logging a CloudWatch ---
-LOGGING["handlers"]["cloudwatch"] = {
+LOGGING["handlers"]["cloudwatch"] = {  # noqa: F405
     "class": "watchtower.CloudWatchLogHandler",
     "log_group": "/sellerscenter/api",
     "stream_name": "django",
     "formatter": "json",
 }
-LOGGING["root"]["handlers"] = ["console", "cloudwatch"]
+LOGGING["root"]["handlers"] = ["console", "cloudwatch"]  # noqa: F405

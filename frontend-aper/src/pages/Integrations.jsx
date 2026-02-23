@@ -1,4 +1,3 @@
-import React from 'react';
 import { Webhook, RefreshCw, Database } from 'lucide-react';
 
 export default function Integrations() {
