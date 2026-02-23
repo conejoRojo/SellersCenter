@@ -12,13 +12,13 @@ El sistema se compone de dos interfaces independientes:
 1. **Dashboard de Comercio (Sellers)**
    *   **Objetivo:** Interfaz para que cada tienda vea su catálogo, órdenes y ventas centralizadas.
    *   **URL (Local):** `http://localhost:5173`
-   *   **URL (Túnel Público):** `https://young-trams-wonder.loca.lt`
+   *   **URL (Túnel Público):** `https://bumpy-cats-rest.loca.lt`
    *   **Tunnel Password:** `45.181.47.146`
 
 2. **Consola de Administración (Aper Admin)**
    *   **Objetivo:** Interfaz de superadministrador para ver la salud del sistema global y métricas de integraciones.
    *   **URL (Local):** `http://localhost:5174`
-   *   **URL (Túnel Público):** `https://clean-chicken-chew.loca.lt`
+   *   **URL (Túnel Público):** `https://slick-grapes-brush.loca.lt`
    *   **Tunnel Password:** `45.181.47.146`
 
 ---
@@ -51,7 +51,7 @@ Sugerimos al cliente ejecutar el siguiente flujo de pruebas para evaluar el MVP:
 
 ### Prueba 2: Recepción Asíncrona (Backend)
 *(Esta prueba requiere herramientas como Postman o cURL).*
-1. Envíe un payload JSON simulando una actualización de producto desde PrestaShop al endpoint público del backend (`https://late-horses-sleep.loca.lt/api/v1/sync/ingesta/`). *(Nota: Si usa Postman, agregue el header `Bypass-Tunnel-Reminder: true` o ingrese primero a la URL en su navegador para validar el Tunnel Password `45.181.47.146`)*.
+1. Envíe un payload JSON simulando una actualización de producto desde PrestaShop al endpoint público del backend (`https://ready-squids-film.loca.lt/api/v1/sync/ingesta/`). *(Nota: Si usa Postman, agregue el header `Bypass-Tunnel-Reminder: true` o ingrese primero a la URL en su navegador para validar el Tunnel Password `45.181.47.146`)*.
 2. Valide que el sistema de forma inmediata responda **HTTP 202 Accepted** (confirmando que Celery y la cola SQS tomaron el control).
 3. Ingrese a la **Consola de Administración** y revise en el módulo *Integraciones & Webhooks* si hubo actividad reflejada.
 
