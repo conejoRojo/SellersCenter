@@ -1,7 +1,7 @@
 # Node
 node_modules/
-package-lock.json
-package.json
+/package-lock.json
+/package.json
 
 # Temporary scripts & outputs
 start_tunnels.js
