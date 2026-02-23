@@ -1,9 +1,0 @@
-[0m[0m
-[0m[4mD:\Desarrollo\Aper\SellersCenter\frontend-aper\src\pages\Integrations.jsx[24m[0m
-[0m  [2m1:8[22m  [31merror[39m  'React' is defined but never used  [2mno-unused-vars[22m[0m
-[0m[0m
-[0m[4mD:\Desarrollo\Aper\SellersCenter\frontend-aper\src\pages\Overview.jsx[24m[0m
-[0m  [2m1:8[22m  [31merror[39m  'React' is defined but never used  [2mno-unused-vars[22m[0m
-[0m[0m
-[0m[31m[1m✖ 2 problems (2 errors, 0 warnings)[22m[39m[0m
-[0m[31m[1m[22m[39m[0m
