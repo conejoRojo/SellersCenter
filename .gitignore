@@ -1,0 +1,18 @@
+# Node
+node_modules/
+package-lock.json
+package.json
+
+# Temporary scripts & outputs
+start_tunnels.js
+tunnels_output.txt
+src/test_wsgi.py
+
+# Python
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+
+# LocalStack / Infra
+infra/docker/.env.local

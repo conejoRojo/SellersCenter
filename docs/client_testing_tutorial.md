@@ -12,12 +12,12 @@ El sistema se compone de dos interfaces independientes:
 1. **Dashboard de Comercio (Sellers)**
    *   **Objetivo:** Interfaz para que cada tienda vea su catálogo, órdenes y ventas centralizadas.
    *   **URL (Local):** `http://localhost:5173`
-   *   **URL (Túnel Público):** `https://seller.tu-tunel-ngrok.app`
+   *   **URL (Túnel Público):** `https://moody-symbols-throw.loca.lt`
 
 2. **Consola de Administración (Aper Admin)**
    *   **Objetivo:** Interfaz de superadministrador para ver la salud del sistema global y métricas de integraciones.
    *   **URL (Local):** `http://localhost:5174`
-   *   **URL (Túnel Público):** `https://admin.tu-tunel-ngrok.app`
+   *   **URL (Túnel Público):** `https://full-tips-watch.loca.lt`
 
 ---
 
@@ -49,7 +49,7 @@ Sugerimos al cliente ejecutar el siguiente flujo de pruebas para evaluar el MVP:
 
 ### Prueba 2: Recepción Asíncrona (Backend)
 *(Esta prueba requiere herramientas como Postman o cURL).*
-1. Envíe un payload JSON JSON simulando una actualización de producto desde PrestaShop al endpoint público del backend (`/api/v1/sync/ingesta/`).
+1. Envíe un payload JSON simulando una actualización de producto desde PrestaShop al endpoint público del backend (`https://chilly-mirrors-sleep.loca.lt/api/v1/sync/ingesta/`).
 2. Valide que el sistema de forma inmediata responda **HTTP 202 Accepted** (confirmando que Celery y la cola SQS tomaron el control).
 3. Ingrese a la **Consola de Administración** y revise en el módulo *Integraciones & Webhooks* si hubo actividad reflejada.
 
