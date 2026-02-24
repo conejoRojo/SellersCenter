@@ -1,0 +1,180 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.4, pytest-8.4.2, pluggy-1.6.0 -- C:\Program Files\Python312\python.exe
+cachedir: .pytest_cache
+django: version: 5.2.11, settings: config.settings.development (from ini)
+rootdir: D:\Desarrollo\Aper\SellersCenter\src
+configfile: pytest.ini
+testpaths: apps
+plugins: locust-2.43.1, django-4.12.0
+collecting ... collected 2 items
+
+apps/sync_engine/tests.py::SyncEngineIngestionTests::test_webhook_ingestion_invalid_payload_returns_400 PASSED [ 50%]
+apps/sync_engine/tests.py::SyncEngineIngestionTests::test_webhook_ingestion_valid_payload_returns_202 FAILED [100%]
+
+================================== FAILURES ===================================
+__ SyncEngineIngestionTests.test_webhook_ingestion_valid_payload_returns_202 __
+apps\sync_engine\tests.py:27: in test_webhook_ingestion_valid_payload_returns_202
+    self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+E   AssertionError: 500 != 202
+---------------------------- Captured stderr call -----------------------------
+[ERROR] apps.core.exceptions: Unhandled exception in view: <apps.sync_engine.views.IngestionWebhookView object at 0x0000016E5047E330>
+Traceback (most recent call last):
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\utils\functional.py", line 32, in __call__
+    return self.__value__
+           ^^^^^^^^^^^^^^
+AttributeError: 'ChannelPromise' object has no attribute '__value__'. Did you mean: '__call__'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\transport\virtual\base.py", line 951, in create_channel
+    return self._avail_channels.pop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: pop from empty list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\transport\virtual\base.py", line 975, in establish_connection
+    self._avail_channels.append(self.create_channel(self))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\transport\virtual\base.py", line 953, in create_channel
+    channel = self.Channel(connection)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\transport\SQS.py", line 287, in __init__
+    self._update_queue_cache(self.queue_name_prefix)
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\transport\SQS.py", line 317, in _update_queue_cache
+    resp = self.sqs().list_queues(QueueNamePrefix=queue_name_prefix)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\client.py", line 1060, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\client.py", line 1084, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 200, in _send_request
+    while self._needs_retry(
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 360, in _needs_retry
+    responses = self._event_emitter.emit(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 207, in __call__
+    if self._checker(**checker_kwargs):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 284, in __call__
+    should_retry = self._should_retry(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 320, in _should_retry
+    return self._checker(attempt_number, response, caught_exception)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 363, in __call__
+    checker_response = checker(
+                       ^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 247, in __call__
+    return self._check_caught_exception(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\retryhandler.py", line 416, in _check_caught_exception
+    raise caught_exception
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 279, in _do_get_response
+    http_response = self._send(request)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\endpoint.py", line 383, in _send
+    return self.http_session.send(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\botocore\httpsession.py", line 506, in send
+    raise EndpointConnectionError(endpoint_url=request.url, error=e)
+botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: "http://localhost:4566/"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Desarrollo\Aper\SellersCenter\src\apps\sync_engine\views.py", line 32, in post
+    process_inbound_webhook.delay(payload)
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\celery\app\base.py", line 947, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\celery\app\amqp.py", line 559, in send_task_message
+    ret = producer.publish(
+          ^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\messaging.py", line 190, in publish
+    return _publish(
+           ^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\messaging.py", line 200, in _publish
+    channel = self.channel
+              ^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+                              ^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\utils\functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+                             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\kombu\connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: Could not connect to the endpoint URL: "http://localhost:4566/"
+[INFO] apps.core.middleware: request
+[ERROR] django.request: Internal Server Error: /api/v1/sync-engine/webhook/
+-------------------------- Captured stderr teardown ---------------------------
+Destroying test database for alias 'default'...
+
+============================== warnings summary ===============================
+apps/sync_engine/tests.py::SyncEngineIngestionTests::test_webhook_ingestion_invalid_payload_returns_400
+apps/sync_engine/tests.py::SyncEngineIngestionTests::test_webhook_ingestion_valid_payload_returns_202
+  C:\Users\USUARIO\AppData\Roaming\Python\Python312\site-packages\django\core\handlers\base.py:61: UserWarning: No directory at: D:\Desarrollo\Aper\SellersCenter\src\staticfiles\
+    mw_instance = middleware(adapted_handler)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED apps/sync_engine/tests.py::SyncEngineIngestionTests::test_webhook_ingestion_valid_payload_returns_202
+================== 1 failed, 1 passed, 2 warnings in 30.37s ===================
