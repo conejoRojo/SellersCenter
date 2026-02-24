@@ -46,6 +46,13 @@ jobs:
         pip install ruff
         ruff check src/
 
+    - name: Initialize PostgreSQL Test Database and User
+      env:
+        PGPASSWORD: sc_password
+      run: |
+        psql -h 127.0.0.1 -p 5433 -U sc_user -c "SELECT 1;" || psql -h 127.0.0.1 -p 5433 -U postgres -c "CREATE USER sc_user WITH PASSWORD 'sc_password';" || true
+        psql -h 127.0.0.1 -p 5433 -U postgres -c "ALTER ROLE sc_user CREATEDB;" || true
+
     - name: Run Pytest
       env:
         DATABASE_URL: postgres://sc_user:sc_password@127.0.0.1:5433/sellerscenter
