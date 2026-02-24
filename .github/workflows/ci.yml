@@ -48,7 +48,11 @@ jobs:
 
     - name: Run Pytest
       env:
-        DATABASE_URL: postgres://sc_user:sc_password@localhost:5433/sellerscenter
+        DATABASE_URL: postgres://sc_user:sc_password@127.0.0.1:5433/sellerscenter
+        DB_HOST: 127.0.0.1
+        DB_USER: sc_user
+        DB_PASSWORD: sc_password
+        DB_PORT: 5433
         SECRET_KEY: "dummy-secret-key-for-django-testing-123!"
       run: |
         cd src
