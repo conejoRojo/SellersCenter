@@ -13,8 +13,8 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_USER: admin
-          POSTGRES_PASSWORD: password
+          POSTGRES_USER: sc_user
+          POSTGRES_PASSWORD: sc_password
           POSTGRES_DB: sellerscenter
         ports:
           - 5433:5432
@@ -48,7 +48,7 @@ jobs:
 
     - name: Run Pytest
       env:
-        DATABASE_URL: postgres://admin:password@localhost:5432/sellerscenter
+        DATABASE_URL: postgres://sc_user:sc_password@localhost:5433/sellerscenter
         DJANGO_SETTINGS_MODULE: config.settings.development
         SECRET_KEY: "dummy-secret-key-for-django-testing-123!"
       run: |
