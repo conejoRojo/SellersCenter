@@ -1,9 +1,10 @@
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
 import uuid
 
+@override_settings(CELERY_TASK_ALWAYS_EAGER=True)
 class SyncEngineIngestionTests(TestCase):
     def setUp(self):
         self.client = APIClient()
