@@ -1,20 +1,18 @@
-# Ignorar todos los archivos por defecto
-*
-
-# Pero no ignorar los directorios (necesario para buscar dentro)
-!*/
-
-# No ignorar los archivos Markdown (.md)
-!*.md
-
-# Excepciones opcionales (por si necesitas el mismo .gitignore)
-!.gitignore
-
-# Excluir específicamente carpetas que no queremos que Git recorra (optimización)
+# Node
 node_modules/
-venv/
-.venv/
-env/
+/package-lock.json
+/package.json
+
+# Temporary scripts & outputs
+start_tunnels.js
+tunnels_output.txt
+src/test_wsgi.py
+
+# Python
 __pycache__/
-.git/
+*.pyc
+.env
 .pytest_cache/
+
+# LocalStack / Infra
+infra/docker/.env.local
