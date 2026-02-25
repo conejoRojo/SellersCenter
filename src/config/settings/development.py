@@ -7,7 +7,7 @@ from .base import *  # noqa: F403
 from decouple import config
 
 DEBUG = True
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
+ALLOWED_HOSTS = ['*']
 
 # --- Base de datos local ---
 DATABASES = {
